@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.13.0
+    jupytext_version: 1.18.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -16,7 +16,7 @@ kernelspec:
 
 ## Matplotlib Is a Drawing Tool
 
-```python
+```{code-cell} ipython3
 import matplotlib.pyplot as plt
 from matplotlib import patches
 from numpy.random import default_rng
@@ -73,7 +73,7 @@ just need to know where to start looking.
 
 ## Some Data
 
-```python
+```{code-cell} ipython3
 from numpy.random import default_rng
 from pandas import DataFrame
 import numpy as np
@@ -128,7 +128,7 @@ Todos
 - removing legends
 - spans & highlighting?
 
-```python
+```{code-cell} ipython3
 from pandas import read_csv
 from matplotlib.pyplot import subplots, subplot_mosaic, show
 
@@ -176,4 +176,3 @@ for g_label, group in agg.groupby(['group']):
 
 show()
 ```
-
