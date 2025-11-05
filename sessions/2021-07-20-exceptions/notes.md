@@ -67,6 +67,10 @@ a = (1, 2
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Missing colon
 for i in range(5)
     pass
@@ -78,12 +82,20 @@ Sometimes python's SyntaxErrors aren't exactly helpful...
 **Solution**: If you ever see a SyntaxError traceback where nothing looks wrong, check the line of code above it.
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # The traceback indicates an issue on line 3, whereas the issue is actually on line 2
 x = (1, 2,
 y = 3
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # The traceback indicates an issue on line 5, whereas the issue is actually on line 4
 my_dict = {
     "hello": 1,
@@ -132,6 +144,10 @@ addition(1, 2) # I'm now calling the function, works as expected
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Whoops, we overwrote the function name with a variable that points to an integer
 addition = 5
 
@@ -154,10 +170,18 @@ math.sqrt(100) # works as expected
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 math.sqrt(-100) # does not return imaginary numbers, instead raises an Exception
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # For comparison, this snippet raises a TypeError
 #   note that we're passing a string into `math.sqrt`
 math.sqrt("100")
@@ -177,10 +201,18 @@ x[1]  # get the second item from the list
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 x[10] # get the 10th item from the list
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # A method can also raise an IndexError if that method attempts to index an item from the object
 x.pop(10)
 ```
@@ -196,11 +228,19 @@ import collections
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # error, we have not installed a package named `does_not_exist`
 import does_not_exist
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # common: watch out for typos!
 import colections
 ```
@@ -219,6 +259,10 @@ print(memoization)
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 print(memoizaton)
 ```
 
@@ -241,11 +285,19 @@ todays_date.year
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Misspelled attribute raises AttributeError
 todays_date.yer
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Accidental overitten variable raises AttributeError
 todays_date = 5
 todays_date.year  # variable `todays_date` is no longer a datetime object. It is an integer.
@@ -257,6 +309,10 @@ So far we have only discussed errors where the only code in the traceback is cod
 It is common practice for functions to be nested- meaning that functions are called inside of functions. For each level of nesting, we will see a slightly longer traceback.
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add(x, y):
     return x + y
 
@@ -266,6 +322,10 @@ add("2", 1)
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add_one(x):
     return add(x, 1)
 
@@ -308,6 +368,10 @@ counter.most_common(2)
 ```
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # What happens if we put a string into the most_common method?
 counter.most_common("a")
 ```
@@ -323,6 +387,10 @@ Sometimes it is necessary to raise errors in your own code. Whether you want to 
 ### Raise your own errors
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Errors can be made, just like any other object in python
 my_error = ValueError("this is a message")
 my_error
@@ -334,6 +402,10 @@ my_error
 </div>
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Errors can be throw by using the `raise` statement
 raise my_error
 ```
@@ -348,6 +420,10 @@ Now lets explore some occasions that we may want to throw our own errors to prev
 #### Raise Your Own Errors - Example
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add_then_multiply(x, y, multiplier=1):
     return (x + y) * multiplier
 
@@ -360,6 +436,10 @@ Our `add_then_multiply` function works as expected. First we add 4 + 5 together.
 Let's see what happens when we change the `multiplier` argument from an number (integer/float) to a string.
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 add_then_multiply(4, 5, multiplier="2")
 ```
 
@@ -368,6 +448,10 @@ Well that was unexpected, the function still works despite our multiplier value 
 Let's see if we can use our own Exception to ensure only numbers can be passed into our function. We're going to use a `TypeError` when an inappropriate type of value is passed into the multiplier argument (e.g. any value that is not an integer or float).
 
 ```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add_then_multiply(x, y, multiplier=1):
     if not isinstance(multiplier, (int, float)):
         raise TypeError("multiplier must be an integer or float")
