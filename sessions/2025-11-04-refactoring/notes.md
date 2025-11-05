@@ -14,7 +14,7 @@ kernelspec:
 
 # When should I *Actually* Refactor my Code?
 
-```python
+```{code-cell} ipython3
 print("Let's Refactor!")
 ```
 
@@ -45,7 +45,7 @@ Some common guidance for writing code
 - DRY: Don’t Repeat Yourself
 - WET: Write Everything Twice
 
-```python
+```{code-cell} ipython3
 from pathlib import Path
 from csv import DictWriter
 from random import Random
@@ -97,7 +97,7 @@ Keep in mind the following generation discontinuities!
 
 - 2025-11-04 millimeters were used instead of meters, so all values are stored as 1000× their original values
 
-```python
+```{code-cell} ipython3
 from pandas import read_csv, NA, concat
 
 res1 = (
@@ -122,7 +122,7 @@ res3 = (
 print(res3)
 ```
 
-```python
+```{code-cell} ipython3
 from pandas import read_csv, NA, concat
 
 def preprocess(df):
@@ -140,7 +140,7 @@ dfs = [
 
 # feed in to the uniform process step
 # contcat(dfs)
-results = [process(df) for df in dfs]
+results = [preprocess(df) for df in dfs]
 ```
 
 - Intentional vs incidental repetition.
@@ -150,7 +150,7 @@ results = [process(df) for df in dfs]
 
 list vs tuple
 
-```python
+```{code-cell} ipython3
 elems = ['a', 'b', 'c'] #   mutable
 elems = ('a', 'b', 'c') # immutable
 
@@ -160,7 +160,7 @@ elems = ['a', 'b', 'c'] #   a collection of similar things
 
 dict vs list[tuple]
 
-```python
+```{code-cell} ipython3
 elems = { 'a': 1,   'b': 2,   'c': 3 }
 
 elems['a'] # key based accession
@@ -182,7 +182,7 @@ for k, v in elems:
 
 Its not just for mypy, it shapes how we think about and write code.
 
-```python
+```{code-cell} ipython3
 from numpy import array, mean, var, sqrt
 from scipy.stats import t
 
@@ -217,12 +217,43 @@ print(result.t_stat)
 
 For function return types, homogeneity > heterogeneity
 
-# homogeneity: all values are of the same type
-# → [1, 2.3]
-# heterogeneity: all values are of different types
-# → [1, 'a', 'hello', type(...)]
+```{code-cell} ipython3
+def fizzbuzz(value: int) -> list[int | str]:
+    results = []
+    for i in range(value+1):
+        if i == 0:
+            results.append(i)
+        elif i % 3 == 0 and i % 5 == 0:
+            results.append('Fizz Buzz')
+        elif i % 3 == 0:
+            results.append('Fizz')
+        elif i % 5 == 0:
+            results.append('Buzz')
+        else:
+            results.append(i)
+    return results
 
-```python
+for msg in fizzbuzz(15):
+    if isinstance(msg, str):
+        print(msg.upper())
+```
+
+The current formulation is difficult to work with, if we want to uppercase
+the messages that are emitted then we will need to perform an `isinstance`
+check on each element, leading to highly branching and nested code.
+
+That is because our return type is *heterogeneous*
+
+heterogeneity: all values are of different types
+→ [1, 'a', 'hello', type(...)]
+
+homogeneity: all values are of the same type
+→ [1, 2.3]
+
+Instead of thinking we need to either return an integer or a string...
+why not return both?
+
+```{code-cell} ipython3
 def fizzbuzz(value: int) -> list[tuple[int, str]]:
     results = []
     for i in range(value+1):
@@ -237,10 +268,7 @@ def fizzbuzz(value: int) -> list[tuple[int, str]]:
     return results
 
 for i, msg in fizzbuzz(15):
-    if isinstnace(msg, int):
-        ...
-
-    print(i, msg)
+    print(i, msg.upper())
 ```
 
 ## Keep External Resources Superficial
@@ -248,11 +276,15 @@ for i, msg in fizzbuzz(15):
 External resources are usually out of your control, you do not want
 their access buried inside of your code.
 
-```zsh
-echo '{"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}' | tee config.json
+```{code-cell} ipython3
+from json import dump
+
+config = {"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}
+with open("config.json", 'w') as f:
+    dump(config, f)
 ```
 
-```python
+```{code-cell} ipython3
 # config.json → {"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}
 from json import load
 
@@ -277,7 +309,7 @@ a config from another file format (yaml, toml, etc.)?
 If we reduce the class initialization function to its simples form (e.g. pass in direct values),
 we can reduce it to a dataclass at the cost of some convenience.
 
-```python
+```{code-cell} ipython3
 # config.json → {"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}
 from json import load
 from dataclasses import dataclass
@@ -298,7 +330,7 @@ print(config)
 
 Thankfully we can add convenience back in via alternative constructors
 
-```python
+```{code-cell} ipython3
 # config.json → {"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}
 from json import load
 from dataclasses import dataclass
@@ -321,7 +353,7 @@ class Config:
 print(Config.from_json('config.json'))
 ```
 
-```python
+```{code-cell} ipython3
 # config.json → {"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}
 from json import load
 
@@ -342,7 +374,7 @@ print(config)
 
 ## When are Exceptions, exceptional?
 
-```python
+```{code-cell} ipython3
 from time import sleep
 
 x = 0

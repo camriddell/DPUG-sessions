@@ -50,7 +50,7 @@ This workshop will help you understand how to read and understand error messages
 
 **Solution**: Review your code and make sure you have no open quotes, brackets, parentheses
 
-```python
+```{code-cell} ipython3
 ---
 tags: [raises-exception]
 ---
@@ -58,7 +58,7 @@ tags: [raises-exception]
 a = "1
 ```
 
-```python
+```{code-cell} ipython3
 ---
 tags: [raises-exception]
 ---
@@ -66,7 +66,11 @@ tags: [raises-exception]
 a = (1, 2
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Missing colon
 for i in range(5)
     pass
@@ -77,13 +81,21 @@ Sometimes python's SyntaxErrors aren't exactly helpful...
 
 **Solution**: If you ever see a SyntaxError traceback where nothing looks wrong, check the line of code above it.
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # The traceback indicates an issue on line 3, whereas the issue is actually on line 2
 x = (1, 2,
 y = 3
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # The traceback indicates an issue on line 5, whereas the issue is actually on line 4
 my_dict = {
     "hello": 1,
@@ -98,7 +110,7 @@ my_dict = {
 
 **Solution**: Check the types of each argument that you're passing into the function in question. Ensure each argument you're passing is appropriate for the function at hand
 
-```python
+```{code-cell} ipython3
 ---
 tags: []
 ---
@@ -106,7 +118,7 @@ integer_list = [1, 2, 3]
 sum(integer_list)
 ```
 
-```python
+```{code-cell} ipython3
 ---
 tags: [raises-exception]
 ---
@@ -123,7 +135,7 @@ Function calling is when you invoke a function by using parentheses.
 
 * Note: more specifically, the object you are trying to call does not define a `__call__` dunder method, which is not limited to just function objects.
 
-```python
+```{code-cell} ipython3
 # Defining the function object
 def addition(x, y):
     return x + y
@@ -131,7 +143,11 @@ def addition(x, y):
 addition(1, 2) # I'm now calling the function, works as expected
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Whoops, we overwrote the function name with a variable that points to an integer
 addition = 5
 
@@ -148,16 +164,24 @@ Similar to a TypeError in terms of its logic (e.g. 'this function received somet
 
 **Solution**: Check the function you're calling, if it requires specific values (e.g. a positive number, a limited number of choices of strings, etc) make sure that your argument falls within those values
 
-```python
+```{code-cell} ipython3
 import math
 math.sqrt(100) # works as expected
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 math.sqrt(-100) # does not return imaginary numbers, instead raises an Exception
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # For comparison, this snippet raises a TypeError
 #   note that we're passing a string into `math.sqrt`
 math.sqrt("100")
@@ -170,17 +194,25 @@ These are common to encounter with container-like objects. (e.g. lists, tuples, 
 
 **Solution**: Double check the index number you are using to index and ensure it is not greater than the length of the container object.
 
-```python
+```{code-cell} ipython3
 # successful indexing
 x = ["a", "b", "c"]
 x[1]  # get the second item from the list
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 x[10] # get the 10th item from the list
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # A method can also raise an IndexError if that method attempts to index an item from the object
 x.pop(10)
 ```
@@ -190,17 +222,25 @@ x.pop(10)
 
 **Solution**: Ensure you do not have a typo in the package name at import statement (variable names are case sensitive too!). If there are no typos, check your package managers (typically `pip` or `conda` to ensure you have the specific package installed. If you are using a virtual environment manager, check that the correct virtual environment is active.
 
-```python
+```{code-cell} ipython3
 # runs successfully, as expected
 import collections
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # error, we have not installed a package named `does_not_exist`
 import does_not_exist
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # common: watch out for typos!
 import colections
 ```
@@ -210,7 +250,7 @@ import colections
 
 **Solution**: Ensure you have spelled your variable name correctly. Additionally, if you are working within a notebook, double check that have run the specific cell that defines your variable.
 
-```python
+```{code-cell} ipython3
 ---
 tags: [raises-exception]
 ---
@@ -218,7 +258,11 @@ memoization = 0
 print(memoization)
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 print(memoizaton)
 ```
 
@@ -229,23 +273,31 @@ print(memoizaton)
 1. Check you have correctly spelled the attribute
 2. Check the object you are operating, to ensure it is what you think it is.
 
-```python
+```{code-cell} ipython3
 import datetime as dt
 todays_date = dt.datetime.today()
 print(todays_date)
 ```
 
-```python
+```{code-cell} ipython3
 # Accessing the year attribute from the datetime object
 todays_date.year
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Misspelled attribute raises AttributeError
 todays_date.yer
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Accidental overitten variable raises AttributeError
 todays_date = 5
 todays_date.year  # variable `todays_date` is no longer a datetime object. It is an integer.
@@ -256,7 +308,11 @@ So far we have only discussed errors where the only code in the traceback is cod
 
 It is common practice for functions to be nested- meaning that functions are called inside of functions. For each level of nesting, we will see a slightly longer traceback.
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add(x, y):
     return x + y
 
@@ -265,7 +321,11 @@ def add(x, y):
 add("2", 1)
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add_one(x):
     return add(x, 1)
 
@@ -293,7 +353,7 @@ This help us understand what function calls were made that led to the raising of
 
 It is common practice to use external libraries in python. When doing so you have access to tons of code that other python users have written. Our tracebacks can become a little funny looking because now we end up seeing code that we have neither written, nor read before. It is important to be able to follow the execution path of code even when you did not write all of the code that is in a given traceback.
 
-```python
+```{code-cell} ipython3
 import collections
 
 # A Counter object returns a dictionary of unique values along with how many times they were observed
@@ -301,13 +361,17 @@ counter = collections.Counter("aaaabbbccd")
 counter
 ```
 
-```python
+```{code-cell} ipython3
 # This Counter object has a few more methods than a normal dictionary
 #  To get the 2 most commonly encountered values:
 counter.most_common(2)
 ```
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # What happens if we put a string into the most_common method?
 counter.most_common("a")
 ```
@@ -322,7 +386,11 @@ Sometimes it is necessary to raise errors in your own code. Whether you want to 
 
 ### Raise your own errors
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Errors can be made, just like any other object in python
 my_error = ValueError("this is a message")
 my_error
@@ -333,7 +401,11 @@ my_error
 **Note** that with the above code, the error did not do anything. We simply created an error object. In order to have the error object stop python from executing code, we will need to raise it.
 </div>
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 # Errors can be throw by using the `raise` statement
 raise my_error
 ```
@@ -347,7 +419,11 @@ Now lets explore some occasions that we may want to throw our own errors to prev
 
 #### Raise Your Own Errors - Example
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add_then_multiply(x, y, multiplier=1):
     return (x + y) * multiplier
 
@@ -359,7 +435,11 @@ Our `add_then_multiply` function works as expected. First we add 4 + 5 together.
 
 Let's see what happens when we change the `multiplier` argument from an number (integer/float) to a string.
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 add_then_multiply(4, 5, multiplier="2")
 ```
 
@@ -367,7 +447,11 @@ Well that was unexpected, the function still works despite our multiplier value 
 
 Let's see if we can use our own Exception to ensure only numbers can be passed into our function. We're going to use a `TypeError` when an inappropriate type of value is passed into the multiplier argument (e.g. any value that is not an integer or float).
 
-```python
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+
 def add_then_multiply(x, y, multiplier=1):
     if not isinstance(multiplier, (int, float)):
         raise TypeError("multiplier must be an integer or float")
@@ -383,7 +467,7 @@ Sometimes you expect to receive an error and want to run a snippet of code in or
 
 The try...except code-block has many more features than described here, however they are outside the scope of this article so we won't get into them here.
 
-```python
+```{code-cell} ipython3
 # Any set up code should exist boutside of the try block.
 #  In general, the try block should not contain many lines of code.
 #  Just the lines of code that raise an Exception
