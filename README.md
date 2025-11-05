@@ -15,6 +15,8 @@ the relevant `.ipynb` file(s) within that session.
 
 ### 2021-07-20-exceptions
 
+[notes](sessions/2025-11-04-refactoring/notes.ipynb)
+
 This workshop is designed to help learners understand and work with **Python
 exceptions and tracebacks**. It covers the difference between an exception,
 which tells you *what* went wrong, and a traceback, which tells you *where* the
@@ -32,6 +34,8 @@ interpreting errors, debugging effectively, and writing robust, error-aware
 Python code.
 
 ### 2025-05-06-matplotlib
+
+[notes](sessions/2025-05-06-matplotlib/notes.ipynb)
 
 This workshop introduces **advanced Matplotlib techniques** for creating
 precise and customized visualizations. It begins by demonstrating how to draw
@@ -51,6 +55,8 @@ systems, demonstrating how to build rich, interpretable visualizations beyond
 simple plotting commands.
 
 ### 2025-11-04-refactoring
+
+[notes](sessions/2025-11-04-refactoring/notes.ipynb)
 
 This workshop discusses **when and how to refactor code effectively**. It
 contrasts notebooks, which are suited for prototyping and interactive work,
