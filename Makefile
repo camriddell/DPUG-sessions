@@ -4,8 +4,12 @@ md_FILES := $(shell find . -name 'notes.md')
 ipynb_FILES := $(md_FILES:.md=.ipynb)
 
 %.ipynb: %.md
-	pixi add --manifest-path $(<D)/pixi.toml jupytext jupyterlab
-	pixi run --manifest-path $(<D)/pixi.toml jupytext --to notebook --execute $<
+	( \
+		set -e; \
+		export PIXI_PROJECT_MANIFEST=$(<D)/pixi.toml; \
+		pixi add jupytext jupyterlab; \
+		pixi run jupytext --from myst --to notebook --execute $<; \
+	)
 
 clean-ipynb:
 	find . -name notes.ipynb | xargs -I {} rm -r {}
