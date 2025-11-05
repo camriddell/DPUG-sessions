@@ -140,7 +140,7 @@ dfs = [
 
 # feed in to the uniform process step
 # contcat(dfs)
-results = [process(df) for df in dfs]
+results = [preprocess(df) for df in dfs]
 ```
 
 - Intentional vs incidental repetition.
@@ -217,10 +217,41 @@ print(result.t_stat)
 
 For function return types, homogeneity > heterogeneity
 
-# homogeneity: all values are of the same type
-# → [1, 2.3]
-# heterogeneity: all values are of different types
-# → [1, 'a', 'hello', type(...)]
+```{code-cell} ipython3
+def fizzbuzz(value: int) -> list[int | str]:
+    results = []
+    for i in range(value+1):
+        if i == 0:
+            results.append(i)
+        elif i % 3 == 0 and i % 5 == 0:
+            results.append('Fizz Buzz')
+        elif i % 3 == 0:
+            results.append('Fizz')
+        elif i % 5 == 0:
+            results.append('Buzz')
+        else:
+            results.append(i)
+    return results
+
+for msg in fizzbuzz(15):
+    if isinstance(msg, str):
+        print(msg.upper())
+```
+
+The current formulation is difficult to work with, if we want to uppercase
+the messages that are emitted then we will need to perform an `isinstance`
+check on each element, leading to highly branching and nested code.
+
+That is because our return type is *heterogeneous*
+
+heterogeneity: all values are of different types
+→ [1, 'a', 'hello', type(...)]
+
+homogeneity: all values are of the same type
+→ [1, 2.3]
+
+Instead of thinking we need to either return an integer or a string...
+why not return both?
 
 ```{code-cell} ipython3
 def fizzbuzz(value: int) -> list[tuple[int, str]]:
@@ -237,10 +268,7 @@ def fizzbuzz(value: int) -> list[tuple[int, str]]:
     return results
 
 for i, msg in fizzbuzz(15):
-    if isinstnace(msg, int):
-        ...
-
-    print(i, msg)
+    print(i, msg.upper())
 ```
 
 ## Keep External Resources Superficial
@@ -249,8 +277,11 @@ External resources are usually out of your control, you do not want
 their access buried inside of your code.
 
 ```{code-cell} ipython3
-with open("config.json") as f:
-    f.write('{"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}')
+from json import dump
+
+config = {"smoothing_factor": 10, "speed": 2, "tolerance": 0.009}
+with open("config.json", 'w') as f:
+    dump(config, f)
 ```
 
 ```{code-cell} ipython3
