@@ -31,7 +31,7 @@ This workshop will help you understand how to read and understand error messages
     <font size="4">Exceptions tell you <b>what</b> went wrong, tracebacks tell you <b>where</b> it went wrong</font>
 </div>
 
-![parts of an exception](../_static/images/exceptions_parts.png)
+![parts of an exception](assets/exceptions_parts.png)
 
 ## Common exceptions and common causes
 
@@ -287,7 +287,7 @@ Lets look at example where we import an external library and encounter an error 
 
 This help us understand what function calls were made that led to the raising of the error
 
-![follow a traceback](../_static/images/exceptions_follow_traceback.png)
+![follow a traceback](assets/exceptions_follow_traceback.png)
 
 ## Tracebacks From External Functions
 
@@ -314,7 +314,7 @@ counter.most_common("a")
 
 ### Breakdown an External Traceback
 
-![follow external traceback](../_static/images/exceptions_follow_traceback_external.png)
+![follow external traceback](assets/exceptions_follow_traceback_external.png)
 
 ## Using Errors in your own code
 
