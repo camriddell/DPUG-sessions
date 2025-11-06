@@ -13,25 +13,25 @@ To get started with the code from any session you should be able to
 And you should see a jupyter lab environment where you can then view/execute
 the relevant `.ipynb` file(s) within that session.
 
-### 2021-07-20-exceptions
+### 2025-11-04-refactoring
 
 [notes](sessions/2025-11-04-refactoring/notes.ipynb)
 
-This workshop is designed to help learners understand and work with **Python
-exceptions and tracebacks**. It covers the difference between an exception,
-which tells you *what* went wrong, and a traceback, which tells you *where* the
-error occurred in your code. The material introduces common Python exceptions
-such as `SyntaxError`, `TypeError`, `ValueError`, `IndexError`,
-`ModuleNotFoundError`, `NameError`, and `AttributeError`, providing
-explanations, common causes, and strategies for debugging them.
+This workshop discusses **when and how to refactor code effectively**. It
+contrasts notebooks, which are suited for prototyping and interactive work,
+with scripts, which are better for long-running processes or repeated tasks.
+The content emphasizes that refactoring should be driven by actual need, such
+as reducing confusion, improving performance, or enabling reuse across
+datasets, while also noting that time spent researching may often be more
+valuable than refactoring.
 
-The workshop also explores **nested tracebacks** and errors arising from
-external libraries, showing how to follow execution paths to diagnose problems.
-Learners are guided on how to **raise their own exceptions** to enforce correct
-usage of functions, and how to handle errors using `try`, `except`, `else`, and
-`finally` blocks. Overall, the workshop emphasizes practical skills for
-interpreting errors, debugging effectively, and writing robust, error-aware
-Python code.
+Practical guidance includes identifying intentional versus incidental
+repetition, understanding data structures like lists, tuples, and dictionaries,
+and using typing to clarify function behavior. The workshop also covers
+managing external resources, such as configuration files, using dataclasses and
+convenience constructors to maintain clarity and flexibility. Finally, it
+touches on proper handling of exceptions and when they are truly necessary,
+encouraging thoughtful design that balances robustness with simplicity.
 
 ### 2025-05-06-matplotlib
 
@@ -54,23 +54,23 @@ annotations, coordinating multiple axes, and exploring different coordinate
 systems, demonstrating how to build rich, interpretable visualizations beyond
 simple plotting commands.
 
-### 2025-11-04-refactoring
+### 2021-07-20-exceptions
 
 [notes](sessions/2025-11-04-refactoring/notes.ipynb)
 
-This workshop discusses **when and how to refactor code effectively**. It
-contrasts notebooks, which are suited for prototyping and interactive work,
-with scripts, which are better for long-running processes or repeated tasks.
-The content emphasizes that refactoring should be driven by actual need, such
-as reducing confusion, improving performance, or enabling reuse across
-datasets, while also noting that time spent researching may often be more
-valuable than refactoring.
+This workshop is designed to help learners understand and work with **Python
+exceptions and tracebacks**. It covers the difference between an exception,
+which tells you *what* went wrong, and a traceback, which tells you *where* the
+error occurred in your code. The material introduces common Python exceptions
+such as `SyntaxError`, `TypeError`, `ValueError`, `IndexError`,
+`ModuleNotFoundError`, `NameError`, and `AttributeError`, providing
+explanations, common causes, and strategies for debugging them.
 
-Practical guidance includes identifying intentional versus incidental
-repetition, understanding data structures like lists, tuples, and dictionaries,
-and using typing to clarify function behavior. The workshop also covers
-managing external resources, such as configuration files, using dataclasses and
-convenience constructors to maintain clarity and flexibility. Finally, it
-touches on proper handling of exceptions and when they are truly necessary,
-encouraging thoughtful design that balances robustness with simplicity.
+The workshop also explores **nested tracebacks** and errors arising from
+external libraries, showing how to follow execution paths to diagnose problems.
+Learners are guided on how to **raise their own exceptions** to enforce correct
+usage of functions, and how to handle errors using `try`, `except`, `else`, and
+`finally` blocks. Overall, the workshop emphasizes practical skills for
+interpreting errors, debugging effectively, and writing robust, error-aware
+Python code.
 
