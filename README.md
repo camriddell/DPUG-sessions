@@ -8,7 +8,8 @@ To get started with the code from any session you should be able to
 1. Install [pixi](https://pixi.sh/latest/installation/)
 2. Clone this repository `git clone https://pixi.sh/latest/installation/`
 3. Navigate to the session you wish to run locally
-4. pixi run jupyterlab .
+    - For example: `cd DPUG-sessions/sessions/2025-11-04-refactoring`
+4. `pixi run jupyterlab .`
 
 And you should see a jupyter lab environment where you can then view/execute
 the relevant `.ipynb` file(s) within that session.
