@@ -1,12 +1,27 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.13.0
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
+
 # The *Real* Fundamentals of Matplotlib
 
-```python
+```{code-cell}
 print("Let’s take a look!")
 ```
 
 ## The Plot Process
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 
 # ① set global configuration; https://matplotlib.org/stable/users/explain/customizing.html#matplotlibrc-sample
@@ -49,7 +64,7 @@ Two interfaces:
 
 **The implicit global API**
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 
 plt.bar(['apple', 'banana', 'lemons'], [3, 1, 2])
@@ -62,7 +77,7 @@ plt.show()
 
 Instead, we can reach for the **explicit object-oriented interface**.
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 
 fig, axes = plt.subplots(nrows=2)
@@ -77,7 +92,7 @@ plt.show()
 An understanding of Object Orientation allows us to quickly explore and make
 API guesses to customize your charts.
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots()
@@ -94,6 +109,7 @@ fig, ax = plt.subplots()
     - create a Figure and Axes
     - `plt.show()` your figure in a GUI
 
++++
 
 ## Coordinate Spaces
 
@@ -106,7 +122,7 @@ An understanding of these systems
 - Makes text labelling/annotating MUCH easier
 - Place artists *exactly* where you want them
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 from numpy import pi, linspace, sin, cos
 
@@ -121,7 +137,7 @@ ax.legend(loc='lower left', bbox_to_anchor=(1.01, .5))
 plt.show()
 ```
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 from numpy import pi, linspace, sin, cos
 
@@ -171,7 +187,7 @@ plt.show()
 
 ## TickLocators & TickFormatters
 
-```python
+```{code-cell}
 import matplotlib.pyplot as plt
 from numpy import linspace
 from numpy.random import default_rng
@@ -200,7 +216,7 @@ Tick Formatters: Control the displayed text at each of the tick locations
 
 **Some common Tick Locators**
 
-```python
+```{code-cell}
 from functools import partial
 from numpy import pi, sin, cos, linspace, round as np_round
 from matplotlib.ticker import (
@@ -267,7 +283,7 @@ plt.show()
 
 Formatters
 
-```python
+```{code-cell}
 from functools import partial
 from numpy import pi, sin, cos, linspace, round as np_round
 from matplotlib.ticker import (
@@ -304,6 +320,7 @@ plt.show()
 
 ## The Anatomy of a Figure
 
++++
 
 ```zsh
 eog https://matplotlib.org/stable/_images/anatomy.png
@@ -319,10 +336,11 @@ Remember that matplotlib is incredibly flexible. It has 20+ years of
 we covered today will elucidate the parts of the API that are worth commiting
 to memory, and which are worth looking up each time you use it.
 
-
++++
 
 ---
 
++++
 
 # HTML/JavaScript (bokeh, altair, plotly)
 - GREAT for interactive viz
@@ -330,8 +348,7 @@ to memory, and which are worth looking up each time you use it.
     - high level interace
 - If you’re new to plotting
 
++++
 
 # Matplotlib
 There are no impossible walls, just confusing ones.
-
-
