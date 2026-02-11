@@ -14,6 +14,22 @@ To get started with the code from any session you should be able to
 And you should see a jupyter lab environment where you can then view/execute
 the relevant `.ipynb` file(s) within that session.
 
+### 2026-02-10 the *real* matplotlib fundamentals
+
+[notes](sessions/2026-02-10-matplotlib/notes.ipynb)
+
+This session discusses some of what I consider to be the *real* fundamentals
+of Matplotlib. We cover the overall process of plotting, the implicit global
+and explicit object-oriented interfaces, the various coordinates systems to
+place visual elements **precisely** where you want them, and Axes TickLocators
+and TickFormatters to customize your x and y tick labels.
+
+To see these principles in action, I'd encourage you to check out some of my favorite Matplotlib blog posts.
+- [Edward Tufte's NYC Weather in 2003](https://www.dontusethiscode.com/blog/2023-03-08_tufte-matplotlib.html)
+- [Visualizing Temperature Deviations](https://www.dontusethiscode.com/blog/2023-12-20_smooth_weather.html)
+- [Less is More: Creating Focused Data Visualizations](https://www.dontusethiscode.com/blog/2024-12-11_less_viz_more_message.html)
+- [The Central Limit Theorem Visualized](https://www.dontusethiscode.com/blog/2022-09-28_central-limit-theorem-visualized.html)
+
 ### 2025-11-04-refactoring
 
 [notes](sessions/2025-11-04-refactoring/notes.ipynb)
