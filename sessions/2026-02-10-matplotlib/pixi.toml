@@ -1,0 +1,17 @@
+[workspace]
+authors = ["Cameron Riddell <cameron@dutc.io>"]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "2025-05-06-matplotlib"
+platforms = ["linux-64", "osx-64", "win-64", "osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+flexitext = ">=0.4.0,<0.5"
+seaborn = ">=0.13.2,<0.14"
+pandas = ">=2.3.3,<3"
+matplotlib = ">=3.10.7,<4"
+numpy = ">=2.3.4,<3"
+python = ">=3.13,<3.14"
