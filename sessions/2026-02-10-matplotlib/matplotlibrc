@@ -1,4 +1,4 @@
-figure.dpi: 100
+figure.dpi: 72
 figure.figsize: 6, 4
-font.size: 18
+font.size: 11
 
