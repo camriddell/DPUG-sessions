@@ -29,9 +29,7 @@ plt.rc('font', size=18)
 
 # ② create a figure and some Axes (or subfigures)
 #   usually accomplished via pyplot.subplots or pyplot.subplot_mosaic
-# fig, axes = plt.subplots(nrows=2, ncols=1)
-fig = plt.figure()
-sub_fig = fig.subfigure()
+fig, axes = plt.subplots(nrows=2, ncols=1)
 
 
 # mosaic = [
